@@ -13,7 +13,7 @@ public class Lane{
 	public List<Hazard> currentHazards;
 	[ReorderableList]
 	public List<Hazard> possibleHazards;
-	public int[] apperanceCooldown;
+	public int[] apperanceCooldowns;
 	public int currentCooldown = 0;
 
 	public Vector3 laneRotation;
@@ -31,10 +31,20 @@ public class Lane{
 
 		if(currentCooldown <= 0){
 			int r = UnityEngine.Random.Range(0, possibleHazards.Count);
-			if (apperanceCooldown[r] > 0) //Just check once?
+			if (apperanceCooldowns[r] > 0) //Just check once?
 				r = UnityEngine.Random.Range(0, possibleHazards.Count);
 
+			for(int i = 0; i < apperanceCooldowns.Length; i++){
+				apperanceCooldowns[i] = Mathf.Clamp(apperanceCooldowns[i] - 1, 0, 100);
+			}
+
 			Hazard h = possibleHazards[r];
+
+			apperanceCooldowns[r] = h.apperanceCooldown;
+
+			if (h.cooldownOtherLanes)
+				controller.BlockHazard(2, h);
+
 			h.spawnedPosition = currentPosition;
 			currentCooldown = h.laneCooldown;
 

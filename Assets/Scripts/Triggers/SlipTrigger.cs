@@ -12,16 +12,16 @@ public class SlipTrigger : BaseTriggerEffect {
 
 	public float playerSlowdown;
 	public override void TriggerEnter(PlayerController player){
-		if(enableWaterParticles){
-			var e = player.water.emission;
-			e.enabled = true;
-		}
-
 		player.staticAcceleration -= playerSlowdown;
 	}
 	public override void Trigger(PlayerController player) {
 		player.transform.Rotate( Vector3.up + Vector3.right*0.1f,
-		 Random.Range(slipAmount.x, slipAmount.y));
+			Random.Range(slipAmount.x, slipAmount.y));
+
+		if (enableWaterParticles) {
+			var e = player.water.emission;
+			e.enabled = true;
+		}
 	}
 	public override void TriggerExit(PlayerController player) {
 		if (enableWaterParticles) {

@@ -139,5 +139,6 @@ MonoBehaviour:
   cleanDistance: 3
   apperanceCooldown: 3
   laneCooldown: 2
+  cooldownOtherLanes: 0
   spawnedPosition: 0
   spawnOffset: {x: 0, y: 0, z: 0}

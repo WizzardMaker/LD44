@@ -8,6 +8,8 @@ public class Hazard : MonoBehaviour
 	public int apperanceCooldown = 3;
 	public int laneCooldown = 5;
 
+	public bool cooldownOtherLanes = false;
+
 	[HideInInspector]
 	public int spawnedPosition;
 

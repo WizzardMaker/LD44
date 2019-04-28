@@ -43,7 +43,7 @@ public class EndlessController : MonoBehaviour {
 		}
 
 
-		lanes.ForEach((l) => { l.lookAhead = lookAhead; l.apperanceCooldown = new int[l.possibleHazards.Count]; });
+		lanes.ForEach((l) => { l.lookAhead = lookAhead; l.apperanceCooldowns = new int[l.possibleHazards.Count]; });
 
 		player = FindObjectOfType<PlayerController>();
     }
@@ -71,14 +71,26 @@ public class EndlessController : MonoBehaviour {
 		}
     }
 
+	public void BlockHazard(int turns, Hazard hazardPrefab){
+		foreach(Lane l in lanes){
+			int i = 0;
+			l.possibleHazards.ForEach(
+			(h) => {
+				if (h == hazardPrefab)
+					l.apperanceCooldowns[i] += turns;
+				i++;
+			});
+		}
+	}
+
 	public void ResetWorld() {
 		_currentStepDistance = 0;
 
 		transform.position = Vector3.zero;
 			lanes.ForEach((l) => {
 				l.currentPosition = 0;
-				l.apperanceCooldown = new int[l.possibleHazards.Count];
-				l.currentHazards.ForEach((h) => Destroy(h));
+				l.apperanceCooldowns = new int[l.possibleHazards.Count];
+				l.currentHazards.ForEach((h) => Destroy(h.gameObject));
 				l.currentHazards.Clear();
 			});
 		

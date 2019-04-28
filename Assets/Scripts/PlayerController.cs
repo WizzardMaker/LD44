@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour {
 
 	public ParticleSystem water;
 
+	float deathTimer = 0, endTime = 5;
+
+
 	public float deathAngle;
 	public float inverseMovementAngle;
 
@@ -37,6 +40,7 @@ public class PlayerController : MonoBehaviour {
 		startingPos = transform.position;
 		startingColliderScale = GetComponentInChildren<MeshCollider>().transform.localScale;
 		startingRot = transform.rotation;
+
 	}
 
 	// Update is called once per frame
@@ -62,6 +66,9 @@ public class PlayerController : MonoBehaviour {
 			rig.AddForce(Vector3.up * jumpForce);
 		}
 
+		var e = water.emission;
+		e.enabled = false;
+
 		CheckDeath();
 	}
 
@@ -72,7 +79,7 @@ public class PlayerController : MonoBehaviour {
 		angle *= Mathf.Sign(angle);
 
 		//Debug.Log(angle);
-		if (angle > deathAngle){
+		if (angle > deathAngle || (Time.time > deathTimer && rig.velocity.magnitude < 0.2f)) {
 			Debug.Log("Dead!");
 
 			isAlive = false;
@@ -89,6 +96,11 @@ public class PlayerController : MonoBehaviour {
 		transform.rotation = startingRot;
 		GetComponentInChildren<MeshCollider>().transform.localScale = startingColliderScale;
 		rig.velocity = Vector3.zero;
+	}
+
+	public void StartPlayer(){
+		deathTimer = Time.time + endTime;
+		isAlive = true;
 	}
 
 	private void OnCollisionStay(Collision collision) {

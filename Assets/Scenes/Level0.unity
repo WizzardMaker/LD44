@@ -181,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23070516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 200}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1120,20 +1120,6 @@ MonoBehaviour:
   player: {fileID: 0}
   lookAhead: 5
   lanes:
-  - name: Walkway Left
-    controller: {fileID: 0}
-    currentHazards: []
-    possibleHazards:
-    - {fileID: 3541319260830700940, guid: 8f3de1a374a3e6c478cb36b348e7da1c, type: 3}
-    - {fileID: 2162349424642198493, guid: a765b68849d5afa439d4e86e41fe5a15, type: 3}
-    - {fileID: 8634986364772641671, guid: dea1b232b956ee24cb4dac6fc98fe617, type: 3}
-    - {fileID: 8634986364772641671, guid: 369eb575c605f2446888c87b31edea61, type: 3}
-    apperanceCooldown: 
-    currentCooldown: 0
-    laneRotation: {x: 0, y: 180, z: 0}
-    currentPosition: 0
-    lookAhead: 0
-    startingPosition: {fileID: 935316804}
   - name: Street Left
     controller: {fileID: 0}
     currentHazards: []
@@ -1145,7 +1131,8 @@ MonoBehaviour:
     - {fileID: 8634986364772641671, guid: ffc15dd0c482d2c41b4409922d2a5d73, type: 3}
     - {fileID: 6340215437931954895, guid: 99c4112fc7638f848b60708dff2e9fad, type: 3}
     - {fileID: 8634986364772641671, guid: dea1b232b956ee24cb4dac6fc98fe617, type: 3}
-    apperanceCooldown: 
+    - {fileID: 5719338936631327958, guid: 6bf7c4393ac8165439c3ab6be3280218, type: 3}
+    apperanceCooldowns: 
     currentCooldown: 0
     laneRotation: {x: 0, y: 180, z: 0}
     currentPosition: 0
@@ -1160,27 +1147,13 @@ MonoBehaviour:
     - {fileID: 3541319260830700940, guid: 595d490ff90652b49817b1c76de2e5ca, type: 3}
     - {fileID: 8634986364772641671, guid: 369eb575c605f2446888c87b31edea61, type: 3}
     - {fileID: 8634986364772641671, guid: dea1b232b956ee24cb4dac6fc98fe617, type: 3}
-    apperanceCooldown: 
+    - {fileID: 5719338936631327958, guid: 6bf7c4393ac8165439c3ab6be3280218, type: 3}
+    apperanceCooldowns: 
     currentCooldown: 0
     laneRotation: {x: 0, y: 0, z: 0}
     currentPosition: 0
     lookAhead: 0
     startingPosition: {fileID: 1021210488}
-  - name: Walkway Right
-    controller: {fileID: 0}
-    currentHazards: []
-    possibleHazards:
-    - {fileID: 3541319260830700940, guid: 8f3de1a374a3e6c478cb36b348e7da1c, type: 3}
-    - {fileID: 3541319260830700940, guid: 3bba1f61cce50d440bc1fba1e0666fb2, type: 3}
-    - {fileID: 2162349424642198493, guid: a765b68849d5afa439d4e86e41fe5a15, type: 3}
-    - {fileID: 8634986364772641671, guid: 9dc7a2a8e4dc1d0459eb3f8e0e78100f, type: 3}
-    - {fileID: 8634986364772641671, guid: ffc15dd0c482d2c41b4409922d2a5d73, type: 3}
-    apperanceCooldown: 
-    currentCooldown: 0
-    laneRotation: {x: 0, y: 0, z: 0}
-    currentPosition: 0
-    lookAhead: 0
-    startingPosition: {fileID: 1414710069}
 --- !u!4 &1560225331
 Transform:
   m_ObjectHideFlags: 0
