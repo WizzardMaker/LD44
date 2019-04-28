@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ScoreSystem : MonoBehaviour {
 	public float score, maxScore = 500;
-	public Transform goal, player;
+	public Transform goal;
+	Transform player;
 
 	public float startingDistance;
 	
     // Start is called before the first frame update
     void Start() {
+		player = FindObjectOfType<PlayerController>().transform;
 		startingDistance = Vector3.Distance(goal.position, player.position);
 	}
 

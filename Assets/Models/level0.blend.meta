@@ -27,6 +27,8 @@ ModelImporter:
     2100010: Material_008
     2100012: Material_006
     2100014: Material_007
+    2100016: Material_009
+    2100018: Material_010
     2300000: CoinMesh
     2300002: Cube
     2300004: Cube_001
@@ -95,7 +97,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour {
 
 			isEnabled = false;
 			GetComponentInChildren<MeshCollider>().transform.localScale = Vector3.one;
+
+			GetComponent<AudioSource>().Pause();
 		}
 	}
 
@@ -76,5 +78,17 @@ public class PlayerController : MonoBehaviour {
 		transform.rotation = startingRot;
 		GetComponentInChildren<MeshCollider>().transform.localScale = startingColliderScale;
 		rig.velocity = Vector3.zero;
+	}
+	private void OnCollisionEnter(Collision collision) {
+		Debug.Log("Ding!");
+		if (collision.collider.gameObject.CompareTag("Floor")) {
+			GetComponent<AudioSource>().Play();
+		}
+	}
+	private void OnCollisionExit(Collision collision) {
+		Debug.Log(collision.collider.gameObject.tag);
+		if(collision.collider.gameObject.CompareTag("Floor")){
+			GetComponent<AudioSource>().Pause();
+		}
 	}
 }
