@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreSystem : MonoBehaviour {
-	public float score, maxScore = 500;
-	public Transform goal;
+	public static float score, highscore;
 	Transform player;
 
 	public float startingDistance;
@@ -12,13 +11,13 @@ public class ScoreSystem : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
 		player = FindObjectOfType<PlayerController>().transform;
-		startingDistance = Vector3.Distance(goal.position, player.position);
+		startingDistance = player.position.z;
 	}
 
 	// Update is called once per frame
 	void Update() {
-		float dis = Vector3.Distance(goal.position, player.position);
+		score = player.position.z - startingDistance;
 
-		score = maxScore * -(dis / startingDistance - 1);
+		highscore = score > highscore ? score : highscore;
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 using NaughtyAttributes;
 
 public class EndlessController : MonoBehaviour {
+	public static EndlessController instance;
+
 	[BoxGroup("Street")]
 	public GameObject streetPrefab;
 	[BoxGroup("Street")]
@@ -29,6 +31,8 @@ public class EndlessController : MonoBehaviour {
 
 	// Start is called before the first frame update
 	void Start() {
+		instance = this;
+
         foreach(Lane l in lanes){
 			l.controller = this;
 		}
@@ -66,4 +70,24 @@ public class EndlessController : MonoBehaviour {
 			Debug.Log("Next!");
 		}
     }
+
+	public void ResetWorld() {
+		_currentStepDistance = 0;
+
+		transform.position = Vector3.zero;
+			lanes.ForEach((l) => {
+				l.currentPosition = 0;
+				l.apperanceCooldown = new int[l.possibleHazards.Count];
+				l.currentHazards.ForEach((h) => Destroy(h));
+				l.currentHazards.Clear();
+			});
+		
+		streetParts.ForEach((s) => Destroy(s));
+		streetParts.Clear();
+
+		for (int i = 0; i < lookAhead; i++) {
+			streetParts.Add(Instantiate(streetPrefab, streetSpawn.position, Quaternion.identity));
+			transform.position += Vector3.forward * controllerSpawnStepDistance;
+		}
+	}
 }

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 	Vector3 startingColliderScale;
 	Quaternion startingRot;
 
-	public static bool isEnabled = true;
+	public static bool isAlive = true;
 
 	public float steerForce;
 	public float staticAcceleration;
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate() {
-		if (!isEnabled)
+		if (!isAlive)
 			return;
 
 
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
 		if (angle > deathAngle){
 			Debug.Log("Dead!");
 
-			isEnabled = false;
+			isAlive = false;
 			GetComponentInChildren<MeshCollider>().transform.localScale = Vector3.one;
 
 			GetComponent<AudioSource>().Pause();
@@ -83,16 +83,17 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	[Button]
-	private void Reset() {
-		isEnabled = true;
-		transform.position = startingPos;
+	public void ResetPlayer() {
+		isAlive = true;
+		rig.MovePosition(startingPos);
 		transform.rotation = startingRot;
 		GetComponentInChildren<MeshCollider>().transform.localScale = startingColliderScale;
 		rig.velocity = Vector3.zero;
 	}
+
 	private void OnCollisionStay(Collision collision) {
 		if (collision.collider.gameObject.CompareTag("Floor")) {
-			if(!GetComponent<AudioSource>().isPlaying && isEnabled)
+			if(!GetComponent<AudioSource>().isPlaying && isAlive)
 				GetComponent<AudioSource>().Play();
 		}
 	}

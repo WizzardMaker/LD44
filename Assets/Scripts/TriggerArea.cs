@@ -26,7 +26,7 @@ public class TriggerArea : MonoBehaviour
 	}
 
 	private void Trigger(Collider c, List<Action<PlayerController>> thens){
-		if (!PlayerController.isEnabled)
+		if (!PlayerController.isAlive)
 			return;
 
 		PlayerController p = c.GetComponentsInParent<PlayerController>().FirstOrDefault();

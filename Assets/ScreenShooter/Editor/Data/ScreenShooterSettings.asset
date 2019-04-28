@@ -14,18 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
   ScreenshotConfigs:
-  - Name: Nexus 4 Portrait
-    Width: 768
-    Height: 1280
-    Type: 0
-  - Name: iPad Hi-Res Portrait
-    Width: 1536
-    Height: 2048
-    Type: 0
   - Name: 4K UHD
     Width: 3840
     Height: 2160
     Type: 0
   Tag: 01_
   AppendTimestamp: 0
-  SaveFolder: Screenshots
+  SaveFolder: P:/Projekte/LudumDare/LD44/Assets/Screenshots
