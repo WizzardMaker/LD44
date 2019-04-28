@@ -31,7 +31,7 @@ public class Lane{
 
 		if(currentCooldown <= 0){
 			int r = UnityEngine.Random.Range(0, possibleHazards.Count);
-			if (apperanceCooldowns[r] > 0) //Just check once?
+			while (apperanceCooldowns[r] > 0) //Just check once?
 				r = UnityEngine.Random.Range(0, possibleHazards.Count);
 
 			for(int i = 0; i < apperanceCooldowns.Length; i++){
