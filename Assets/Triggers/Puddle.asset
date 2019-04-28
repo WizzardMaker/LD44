@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4443aa3230b586243ab47c5e78cef8ea, type: 3}
   m_Name: Puddle
   m_EditorClassIdentifier: 
-  slipAmount: {x: 1.2669685, y: 3.2352934}
+  slipAmount: {x: 3.93665, y: 5}
   enableWaterParticles: 1
+  playerSlowdown: 10
