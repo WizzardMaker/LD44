@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
   ScreenshotConfigs:
-  - Name: 4K UHD
+  - Name: 4KUHD
     Width: 3840
     Height: 2160
     Type: 0
-  Tag: 01_
-  AppendTimestamp: 0
-  SaveFolder: P:/Projekte/LudumDare/LD44/Assets/Screenshots
+  Tag: scr_
+  AppendTimestamp: 1
+  SaveFolder: P:/Projekte/LudumDare/LD44/BUILDS/WebGL
