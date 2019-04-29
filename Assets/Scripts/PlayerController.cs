@@ -92,7 +92,9 @@ public class PlayerController : MonoBehaviour {
 	[Button]
 	public void ResetPlayer() {
 		isAlive = true;
+		turn = 0;
 		rig.MovePosition(startingPos);
+		rig.maxAngularVelocity = 16f;
 		transform.rotation = startingRot;
 		GetComponentInChildren<MeshCollider>().transform.localScale = startingColliderScale;
 		rig.velocity = Vector3.zero;
@@ -101,6 +103,9 @@ public class PlayerController : MonoBehaviour {
 	public void StartPlayer(){
 		deathTimer = Time.time + endTime;
 		isAlive = true;
+		rig.isKinematic = false;
+		rig.AddForce(Vector3.forward * 20, ForceMode.VelocityChange);
+		rig.AddTorque(transform.right * startAcceleration, ForceMode.VelocityChange);
 	}
 
 	private void OnCollisionStay(Collision collision) {
